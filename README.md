@@ -38,5 +38,12 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
   * ```
     php artisan db::seed
     ```
+* Login with account
+    * email : ```
+              admin@gmail.com
+              ```
+    * pass : ```
+              admin123!
+              ```
 * Done
 ## Happy Coding :v:
