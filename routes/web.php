@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::get('/', function () {
     return view('frontsite.pages.home.index');
-})->middleware('auth');
+});
+Route::get('/dashboard', function () {
+    return view('backsite.pages.dashboard.index');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -1,23 +1,14 @@
-@extends('layouts.app')
-
+@extends('backsite.layouts.app')
+@push('style')
+<style></style>
+@endpush
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<center>
+    <h1 class="mb-5">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</h1>
+    <img class="img-fluid mt-5 mb-2" src="{{ asset('images/welcome-1.svg') }}" alt="">
+    <h1>WELCOME</h1>
+</center>
 @endsection
+@push('script')
+<script></script>
+@endpush
