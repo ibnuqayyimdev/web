@@ -33,5 +33,11 @@
           </ul>
         </div>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('content_settings/list') }}">
+          <span class="menu-title">Settings</span>
+          <i class="mdi mdi-view-dashboard menu-icon"></i>
+        </a>
+      </li>
     </ul>
   </nav>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContentSettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-Route::get('/', function () {
-    return view('frontsite.pages.home.index');
-});
-Route::get('/dashboard', function () {
-    return view('backsite.pages.dashboard.index');
-});
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::view('/', 'frontsite.pages.home.index');
+Route::view('/dashboard', 'backsite.pages.dashboard.index');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/content_settings/list', [ContentSettingController::class, 'list'])->name('content_settings.list');
+Route::get('/content_settings/create', [ContentSettingController::class, 'create'])->name('content_settings.create');
+Route::post('/content_settings/store',[ContentSettingController::class, 'store'])->name('content_settings.store');
