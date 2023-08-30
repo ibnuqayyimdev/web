@@ -38,6 +38,8 @@
           <span class="menu-title">Settings</span>
           <i class="mdi mdi-view-dashboard menu-icon"></i>
         </a>
+
       </li>
+      <li class="nav-item"> <a class="nav-link" href="{{ url('profile-sekolah') }}"> <span class="menu-title">Profile Sekolah</span> <i class="mdi mdi-view-dashboard menu-icon"></i> </a> </li>
     </ul>
   </nav>
