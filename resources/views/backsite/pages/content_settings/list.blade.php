@@ -13,6 +13,7 @@
                     <th scope="col">Type</th>
                     {{-- <th scope="col">Exstra Attributes</th> --}}
                     <th scope="col">Status</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,7 +23,22 @@
                         <td>{{ $dataContentSettings->name }}</td>
                         <td>{{ $dataContentSettings->type_name }}</td>
                         {{-- <td>{{ $dataContentSettings->extra_attributes }}</td> --}}
-                        <td>{{ $dataContentSettings->status }}</td>
+                        <td>
+                            <form action="{{ route('content_settings.update_status', $dataContentSettings->id) }}"
+                                method="POST">
+                                @csrf
+                                @method('PATCH')
+                                @if ($dataContentSettings->status)
+                                    <button type="submit" class="btn btn-success btn-sm">On</button>
+                                @else
+                                    <button type="submit" class="btn btn-danger btn-sm">Off</button>
+                                @endif
+                            </form>
+                        </td>
+                        <td>
+                            <a href="{{ route('content_settings.edit', $dataContentSettings->id) }}"
+                                class="btn btn-primary btn-sm">Edit</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

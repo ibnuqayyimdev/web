@@ -18,14 +18,20 @@ use App\Http\Controllers\SchoolProfileController;
 Auth::routes();
 Route::view('/', 'frontsite.pages.home.index');
 
-Route::middleware('auth')->group( function () {
+Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::view('/dashboard', 'backsite.pages.dashboard.index');
 
     Route::get('/content_settings/list', [ContentSettingController::class, 'list'])->name('content_settings.list');
     Route::get('/content_settings/create', [ContentSettingController::class, 'create'])->name('content_settings.create');
-    Route::post('/content_settings/store',[ContentSettingController::class, 'store'])->name('content_settings.store');
+    Route::post('/content_settings/store', [ContentSettingController::class, 'store'])->name('content_settings.store');
+    Route::patch('/content_settings/update_status/{id}', [ContentSettingController::class, 'updateStatus'])->name('content_settings.update_status');
+    Route::get('/content_settings/edit/{id}', [ContentSettingController::class, 'edit'])->name('content_settings.edit');
+    Route::patch('/content_settings/update/{id}', [ContentSettingController::class, 'update'])->name('content_settings.update');
 
-    Route::get('/profile-sekolah',[SchoolProfileController::class,'index']);
-    Route::post('/profile-sekolah-store',[SchoolProfileController::class,'store']);
+
+
+
+    Route::get('/profile-sekolah', [SchoolProfileController::class, 'index']);
+    Route::post('/profile-sekolah-store', [SchoolProfileController::class, 'store']);
 });

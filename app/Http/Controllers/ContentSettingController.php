@@ -34,4 +34,27 @@ class ContentSettingController extends Controller
 
         return redirect()->route('content_settings.list');
     }
+
+    public function updateStatus($id)
+    {
+        $contentSetting = ContentSetting::findOrFail($id);
+        $contentSetting->status = !$contentSetting->status;
+        $contentSetting->save();
+
+        return redirect()->route('content_settings.list');
+    }
+
+    public function edit($id)
+    {
+        $contentSetting = ContentSetting::findOrFail($id);
+        return view('backsite.pages.content_settings.edit', compact('contentSetting'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $contentSetting = ContentSetting::findOrFail($id);
+        $contentSetting->update($request->all());
+
+        return redirect()->route('content_settings.list');
+    }
 }
