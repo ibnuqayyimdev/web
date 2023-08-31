@@ -10,6 +10,11 @@ class ContentSetting extends Model
     use HasFactory;
     protected $fillable = ['name', 'type', 'extra_attributes', 'status'];
 
+    const TYPE = [
+        '0' => 'BACKSITE',
+        '1' => 'FRONTSITE',
+    ];
+
     public function getTypeNameAttribute()
     {
         return $this->attributes['type'] === 1 ? 'ACTIVE' : 'NON ACTIVE';
