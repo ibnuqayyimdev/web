@@ -11,8 +11,13 @@ class ContentSetting extends Model
     protected $fillable = ['name', 'type', 'extra_attributes', 'status'];
 
     const TYPE = [
-        '0' => 'BACKSITE',
-        '1' => 'FRONTSITE',
+        'BACKSITE' => 0,
+        'FRONTSITE' => 1,
+    ];
+
+    const STATUS = [
+        'NON_ACTIVE' => 0,
+        'ACTIVE' => 1,
     ];
 
     public function getTypeNameAttribute()

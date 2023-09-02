@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ContentSetting;
-
-
+use Exception;
 use Illuminate\Http\Request;
 
 class ContentSettingController extends Controller
@@ -18,7 +17,8 @@ class ContentSettingController extends Controller
 
     public function create()
     {
-        return view('backsite.pages.content_settings.create');
+        $data['types'] = ContentSetting::TYPE;
+        return view('backsite.pages.content_settings.create',$data);
     }
 
     public function store(Request $request)
@@ -26,13 +26,19 @@ class ContentSettingController extends Controller
         $validatedData = $request->validate([
             'name'             => 'required|string|max:255',
             'type'             => 'required|numeric|max:255',
-            // 'extra_attributes' => 'nullable|string|max:255',
-            'status'           => 'boolean'
         ]);
 
-        ContentSetting::create($validatedData);
+        try {
+            $validatedData['status'] = ContentSetting::STATUS['ACTIVE'];
+            ContentSetting::create($validatedData);
+        } catch (Exception $e) {
+            if(env('APP_ENV') == 'local'){
+                dd($e);
+            }
+            return back()->with(['message' => 'Something went wrong!','alert-type' => 'error']);
+        }
 
-        return redirect()->route('content_settings.list');
+        return redirect()->route('content_settings.list')->with(['message' => 'Data created successfull!','alert-type' => 'success']);
     }
 
     public function updateStatus($id)
