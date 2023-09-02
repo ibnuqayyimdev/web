@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContentSettingController;
+use App\Http\Controllers\RegistrationScheduleController;
 use App\Http\Controllers\SchoolProfileController;
 
 /*
@@ -16,7 +17,7 @@ use App\Http\Controllers\SchoolProfileController;
 */
 
 Auth::routes();
-Route::view('/', 'frontsite.pages.home.index');
+Route::get('/', [App\Http\Controllers\Frontsite\HomeController::class,'index']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -31,7 +32,8 @@ Route::middleware('auth')->group(function () {
 
 
 
-
     Route::get('/profile-sekolah', [SchoolProfileController::class, 'index']);
     Route::post('/profile-sekolah-store', [SchoolProfileController::class, 'store']);
+
+    Route::get('/register-schedule', [RegistrationScheduleController::class, 'index']);
 });

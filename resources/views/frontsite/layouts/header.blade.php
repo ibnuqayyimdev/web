@@ -1,7 +1,7 @@
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt=""></a>
+      <a href="index.html" class="logo me-auto"><img src="{{ asset('Logo-Ibnu-Qayyim/Logo Horizontal.png') }}" alt=""></a>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <h1 class="logo me-auto"><a href="index.html">Medicio</a></h1> -->
 
@@ -31,7 +31,10 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Daftar</span> Sekarang</a>
+      <a href="{{ route('register') }}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Daftar</span> Sekarang</a>
+      @if (!auth()->check())
+      <a href="{{ route('register') }}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Login</span></a>
+      @endif
 
     </div>
   </header>

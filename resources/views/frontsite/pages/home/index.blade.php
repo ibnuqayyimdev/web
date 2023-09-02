@@ -9,10 +9,10 @@
       <div class="carousel-inner" role="listbox">
 
         <!-- Slide 1 -->
-        <div class="carousel-item active" style="background-image: url({{ asset('medicio/assets/img/slide/slide-1.jpg') }})">
+        <div class="carousel-item active" style="background-image: url({{ asset('Logo-Ibnu-Qayyim/Banner.png') }})">
           <div class="container">
             <h2>SMP <span>Ibnu Qayyim</span></h2>
-            <p>Yayasan SMP Ibnu Qayyim didirikan pada 01 Oktober 2023 oleh tokoh-tokoh Islam dan Pemuka Masyarakat di Jakarta</p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia culpa ad praesentium fugit ex maxime iste fugiat provident quam dolores? Officiis omnis ipsum similique hic. Eligendi vel ipsa ipsam asperiores eveniet! Ducimus dignissimos ipsum repellat, quidem nulla officiis mollitia unde.</p>
             <a href="#about" class="btn-get-started scrollto">Read More</a>
           </div>
         </div>
@@ -20,7 +20,7 @@
         <!-- Slide 2 -->
         <div class="carousel-item" style="background-image: url({{ asset('medicio/assets/img/slide/slide-2.jpg') }})">
           <div class="container">
-            <h2>Lorem Ipsum Dolor</h2>
+            <h2>Muraja'ah</h2>
             <p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel.</p>
             <a href="#about" class="btn-get-started scrollto">Read More</a>
           </div>
@@ -29,7 +29,7 @@
         <!-- Slide 3 -->
         <div class="carousel-item" style="background-image: url({{ asset('medicio/assets/img/slide/slide-3.jpg') }})">
           <div class="container">
-            <h2>Sequi ea ut et est quaerat</h2>
+            <h2>Lorem, ipsum dolor.</h2>
             <p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel.</p>
             <a href="#about" class="btn-get-started scrollto">Read More</a>
           </div>
@@ -98,9 +98,9 @@
       <div class="container" data-aos="zoom-in">
 
         <div class="text-center">
-          <h3>In an emergency? Need help now?</h3>
+          <h3>Cari Sekolah Sekaligus Ingin Jadi Hafiz Qur'an?</h3>
           <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <a class="cta-btn scrollto" href="#appointment">Make an Make an Appointment</a>
+          <a class="cta-btn scrollto" href="{{ route('register') }}">Daftar Sekarang</a>
         </div>
 
       </div>
@@ -117,7 +117,7 @@
 
         <div class="row">
           <div class="col-lg-6" data-aos="fade-right">
-            <img src="{{ asset('medicio/assets/img/about.jpg') }}" class="img-fluid" alt="">
+            <img src="{{ asset('Logo-Ibnu-Qayyim/Logo Mockup (2).jpg') }}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left">
             <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
@@ -223,228 +223,306 @@
     </section><!-- End Features Section -->
 
     <!-- ======= Services Section ======= -->
+    @if (isset($fasilitasPendidikan->status) && $fasilitasPendidikan->status)
     <section id="services" class="services services">
-      <div class="container" data-aos="fade-up">
+        <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
-          <h2>Fasilitas & Pendidikan</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            <div class="section-title">
+            <h2>Fasilitas & Pendidikan</h2>
+            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            </div>
+
+            <div class="row">
+            <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
+                <div class="icon"><i class="fa-solid fa-kaaba"></i></div>
+                <h4 class="title"><a href="">Bahasa Arab</a></h4>
+                <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+            </div>
+            <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
+                <div class="icon"><i class="fa-solid fa-book-quran"></i></div>
+                <h4 class="title"><a href="">Hafiz Qur'an</a></h4>
+                <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+            </div>
+            <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
+                <div class="icon"><i class="fa-solid fa-mosque"></i></div>
+                <h4 class="title"><a href="">Mushola</a></h4>
+                <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+            </div>
+            <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
+                <div class="icon"><i class="fa-solid fa-baseball-bat-ball"></i></div>
+                <h4 class="title"><a href="">Tempat Olaharaga</a></h4>
+                <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            </div>
+            <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
+                <div class="icon"><i class="fas fa-wheelchair"></i></div>
+                <h4 class="title"><a href="">Nemo Enim</a></h4>
+                <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+            </div>
+            <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
+                <div class="icon"><i class="fas fa-notes-medical"></i></div>
+                <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
+                <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+            </div>
+            </div>
+
         </div>
-
-        <div class="row">
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon"><i class="fa-solid fa-kaaba"></i></div>
-            <h4 class="title"><a href="">Bahasa Arab</a></h4>
-            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon"><i class="fa-solid fa-book-quran"></i></div>
-            <h4 class="title"><a href="">Hafiz Qur'an</a></h4>
-            <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon"><i class="fa-solid fa-mosque"></i></div>
-            <h4 class="title"><a href="">Mushola</a></h4>
-            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon"><i class="fa-solid fa-baseball-bat-ball"></i></div>
-            <h4 class="title"><a href="">Tempat Olaharaga</a></h4>
-            <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon"><i class="fas fa-wheelchair"></i></div>
-            <h4 class="title"><a href="">Nemo Enim</a></h4>
-            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon"><i class="fas fa-notes-medical"></i></div>
-            <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
-            <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End Services Section -->
+    </section>
+    @endif
+    <!-- End Services Section -->
 
     <!-- ======= Departments Section ======= -->
+    @if (isset($kegiatanSiswa->status) && $kegiatanSiswa->status)
     <section id="departments" class="departments">
-      <div class="container" data-aos="fade-up">
+        <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
-          <h2>Kegiatan Siswa</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <ul class="nav nav-tabs flex-column">
-              <li class="nav-item">
-                <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
-                  <h4>Membaca Al-Qur'an</h4>
-                  <p>Quis excepturi porro totam sint earum quo nulla perspiciatis eius.</p>
-                </a>
-              </li>
-              <li class="nav-item mt-2">
-                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2">
-                  <h4>Sholat Dhuha</h4>
-                  <p>Voluptas vel esse repudiandae quo excepturi.</p>
-                </a>
-              </li>
-              <li class="nav-item mt-2">
-                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3">
-                  <h4>Muraja'ah Al-Qur'an</h4>
-                  <p>Velit veniam ipsa sit nihil blanditiis mollitia natus.</p>
-                </a>
-              </li>
-              <li class="nav-item mt-2">
-                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4">
-                  <h4>Mendengarkan Ceramah</h4>
-                  <p>Ratione hic sapiente nostrum doloremque illum nulla praesentium id</p>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-lg-8">
-            <div class="tab-content">
-              <div class="tab-pane active show" id="tab-1">
-                <h3>Membaca Al-Qur'an</h3>
-                <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                <img src="{{ asset('medicio/assets/img/baca-quran.jpg') }}" alt="" class="img-fluid">
-                <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
-              </div>
-              <div class="tab-pane" id="tab-2">
-                <h3>Sholat Dhuha</h3>
-                <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                <img src="{{ asset('medicio/assets/img/sholat-berjamaah.jpg') }}" alt="" class="img-fluid">
-                <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
-              </div>
-              <div class="tab-pane" id="tab-3">
-                <h3>Muraja'ah Al-Qur'an</h3>
-                <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                <img src="{{ asset('medicio/assets/img/murojoah-alquran.jpg') }}" alt="" class="img-fluid">
-                <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
-              </div>
-              <div class="tab-pane" id="tab-4">
-                <h3>Mendengarkan Ceramah</h3>
-                <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                <img src="{{ asset('medicio/assets/img/slide/slide-2.jpg') }}" alt="" class="img-fluid">
-                <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
-              </div>
+            <div class="section-title">
+            <h2>Kegiatan Siswa</h2>
+            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
             </div>
-          </div>
-        </div>
 
-      </div>
-    </section><!-- End Departments Section -->
+            <div class="row" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <ul class="nav nav-tabs flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
+                    <h4>Membaca Al-Qur'an</h4>
+                    <p>Quis excepturi porro totam sint earum quo nulla perspiciatis eius.</p>
+                    </a>
+                </li>
+                <li class="nav-item mt-2">
+                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2">
+                    <h4>Sholat Dhuha</h4>
+                    <p>Voluptas vel esse repudiandae quo excepturi.</p>
+                    </a>
+                </li>
+                <li class="nav-item mt-2">
+                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3">
+                    <h4>Muraja'ah Al-Qur'an</h4>
+                    <p>Velit veniam ipsa sit nihil blanditiis mollitia natus.</p>
+                    </a>
+                </li>
+                <li class="nav-item mt-2">
+                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4">
+                    <h4>Mendengarkan Ceramah</h4>
+                    <p>Ratione hic sapiente nostrum doloremque illum nulla praesentium id</p>
+                    </a>
+                </li>
+                </ul>
+            </div>
+            <div class="col-lg-8">
+                <div class="tab-content">
+                <div class="tab-pane active show" id="tab-1">
+                    <h3>Membaca Al-Qur'an</h3>
+                    <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
+                    <img src="{{ asset('medicio/assets/img/baca-quran.jpg') }}" alt="" class="img-fluid">
+                    <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
+                </div>
+                <div class="tab-pane" id="tab-2">
+                    <h3>Sholat Dhuha</h3>
+                    <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
+                    <img src="{{ asset('medicio/assets/img/sholat-berjamaah.jpg') }}" alt="" class="img-fluid">
+                    <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
+                </div>
+                <div class="tab-pane" id="tab-3">
+                    <h3>Muraja'ah Al-Qur'an</h3>
+                    <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
+                    <img src="{{ asset('medicio/assets/img/murojoah-alquran.jpg') }}" alt="" class="img-fluid">
+                    <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
+                </div>
+                <div class="tab-pane" id="tab-4">
+                    <h3>Mendengarkan Ceramah</h3>
+                    <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
+                    <img src="{{ asset('medicio/assets/img/slide/slide-2.jpg') }}" alt="" class="img-fluid">
+                    <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
+                </div>
+                </div>
+            </div>
+            </div>
+
+        </div>
+    </section>
+    @endif
+    <!-- End Departments Section -->
 
     <!-- ======= Testimonials Section ======= -->
+    @if (isset($testimonial->status) && $testimonial->status)
     <section id="testimonials" class="testimonials">
-      <div class="container" data-aos="fade-up">
+        <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
-          <h2>Testimonials</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            <div class="section-title">
+            <h2>Testimonials</h2>
+            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            </div>
+
+            <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                <div class="testimonial-item">
+                    <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                    <img src="{{ asset('Logo-Ibnu-Qayyim/Logo 2.png') }}" class="testimonial-img" alt="">
+                    <h3>Saul Goodman</h3>
+                    <h4>Ceo &amp; Founder</h4>
+                </div>
+                </div>
+                <!-- End testimonial item -->
+
+                <div class="swiper-slide">
+                <div class="testimonial-item">
+                    <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                    <img src="{{ asset('Logo-Ibnu-Qayyim/Logo 2.png') }}" class="testimonial-img" alt="">
+                    <h3>Matt Brandon</h3>
+                    <h4>Freelancer</h4>
+                </div>
+                </div>
+                <!-- End testimonial item -->
+
+                <div class="swiper-slide">
+                <div class="testimonial-item">
+                    <p>
+                    <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                    Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                    <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                    </p>
+                    <img src="{{ asset('Logo-Ibnu-Qayyim/Logo 2.png') }}" class="testimonial-img" alt="">
+                    <h3>John Larson</h3>
+                    <h4>Entrepreneur</h4>
+                </div>
+                </div>
+                <!-- End testimonial item -->
+
+            </div>
+            <div class="swiper-pagination"></div>
+            </div>
+
         </div>
+    </section>
+    @endif
+    <!-- End Testimonials Section -->
 
-        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
+    <!-- ======= Doctors Section ======= -->
+    @if (isset($guru->status) && $guru->status)
+    <section id="doctors" class="doctors section-bg">
+        <div class="container" data-aos="fade-up">
 
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="{{ asset('medicio/assets/img/testimonials/testimonials-1.jpg') }}" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-              </div>
-            </div><!-- End testimonial item -->
+            <div class="section-title">
+            <h2>Guru</h2>
+            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            </div>
 
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="{{ asset('medicio/assets/img/testimonials/testimonials-2.jpg') }}" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-              </div>
-            </div><!-- End testimonial item -->
+            <div class="row">
 
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="{{ asset('medicio/assets/img/testimonials/testimonials-3.jpg') }}" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-              </div>
-            </div><!-- End testimonial item -->
+            <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                <div class="member" data-aos="fade-up" data-aos-delay="100">
+                <div class="member-img">
+                    <img src="{{ asset('Logo-Ibnu-Qayyim/Logo Ibnul Qoyyim.jpg') }}" class="img-fluid" alt="">
+                    <div class="social">
+                    <a href=""><i class="bi bi-twitter"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h4>Walter White</h4>
+                    <span>Chief Medical Officer</span>
+                </div>
+                </div>
+            </div>
 
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="{{ asset('medicio/assets/img/testimonials/testimonials-4.jpg') }}" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-              </div>
-            </div><!-- End testimonial item -->
+            <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                <div class="member" data-aos="fade-up" data-aos-delay="300">
+                <div class="member-img">
+                    <img src="{{ asset('Logo-Ibnu-Qayyim/Logo Ibnul Qoyyim.jpg') }}" class="img-fluid" alt="">
+                    <div class="social">
+                    <a href=""><i class="bi bi-twitter"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h4>William Anderson</h4>
+                    <span>Cardiology</span>
+                </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                <div class="member" data-aos="fade-up" data-aos-delay="100">
+                <div class="member-img">
+                    <img src="{{ asset('Logo-Ibnu-Qayyim/Logo Ibnul Qoyyim.jpg') }}" class="img-fluid" alt="">
+                    <div class="social">
+                    <a href=""><i class="bi bi-twitter"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h4>Walter White</h4>
+                    <span>Chief Medical Officer</span>
+                </div>
+                </div>
+            </div>
 
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="{{ asset('medicio/assets/img/testimonials/testimonials-5.jpg') }}" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-              </div>
-            </div><!-- End testimonial item -->
+            <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                <div class="member" data-aos="fade-up" data-aos-delay="300">
+                <div class="member-img">
+                    <img src="{{ asset('Logo-Ibnu-Qayyim/Logo Ibnul Qoyyim.jpg') }}" class="img-fluid" alt="">
+                    <div class="social">
+                    <a href=""><i class="bi bi-twitter"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h4>William Anderson</h4>
+                    <span>Cardiology</span>
+                </div>
+                </div>
+            </div>
 
-          </div>
-          <div class="swiper-pagination"></div>
+            </div>
+
         </div>
-
-      </div>
-    </section><!-- End Testimonials Section -->
+    </section>
+    @endif
+    <!-- End Doctors Section -->
 
     <!-- ======= Gallery Section ======= -->
+    @if (isset($galery->status) && $galery->status)
     <section id="gallery" class="gallery">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Gallery</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="gallery-slider swiper">
-          <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('medicio/assets/img/gallery/gallery') }}-1.jpg"><img src="{{ asset('medicio/assets/img/gallery/gallery') }}-1.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('medicio/assets/img/gallery/gallery') }}-2.jpg"><img src="{{ asset('medicio/assets/img/gallery/gallery') }}-2.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('medicio/assets/img/gallery/gallery') }}-3.jpg"><img src="{{ asset('medicio/assets/img/gallery/gallery') }}-3.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('medicio/assets/img/gallery/gallery') }}-1.jpg"><img src="{{ asset('medicio/assets/img/gallery/gallery') }}-1.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('medicio/assets/img/gallery/gallery') }}-2.jpg"><img src="{{ asset('medicio/assets/img/gallery/gallery') }}-2.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('medicio/assets/img/gallery/gallery') }}-3.jpg"><img src="{{ asset('medicio/assets/img/gallery/gallery') }}-3.jpg" class="img-fluid" alt=""></a></div>
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2>Gallery</h2>
+            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
           </div>
-          <div class="swiper-pagination"></div>
-        </div>
 
-      </div>
-    </section><!-- End Gallery Section -->
+          <div class="gallery-slider swiper">
+            <div class="swiper-wrapper align-items-center">
+              <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('medicio/assets/img/gallery/gallery') }}-1.jpg"><img src="{{ asset('medicio/assets/img/gallery/gallery') }}-1.jpg" class="img-fluid" alt=""></a></div>
+              <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('medicio/assets/img/gallery/gallery') }}-2.jpg"><img src="{{ asset('medicio/assets/img/gallery/gallery') }}-2.jpg" class="img-fluid" alt=""></a></div>
+              <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('medicio/assets/img/gallery/gallery') }}-3.jpg"><img src="{{ asset('medicio/assets/img/gallery/gallery') }}-3.jpg" class="img-fluid" alt=""></a></div>
+              <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('medicio/assets/img/gallery/gallery') }}-1.jpg"><img src="{{ asset('medicio/assets/img/gallery/gallery') }}-1.jpg" class="img-fluid" alt=""></a></div>
+              <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('medicio/assets/img/gallery/gallery') }}-2.jpg"><img src="{{ asset('medicio/assets/img/gallery/gallery') }}-2.jpg" class="img-fluid" alt=""></a></div>
+              <div class="swiper-slide"><a class="gallery-lightbox" href="{{ asset('medicio/assets/img/gallery/gallery') }}-3.jpg"><img src="{{ asset('medicio/assets/img/gallery/gallery') }}-3.jpg" class="img-fluid" alt=""></a></div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+
+        </div>
+      </section>
+    @endif
+    <!-- End Gallery Section -->
 
     <!-- ======= Frequently Asked Questioins Section ======= -->
     <section id="faq" class="faq section-bg">

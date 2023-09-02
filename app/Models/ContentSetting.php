@@ -22,6 +22,11 @@ class ContentSetting extends Model
 
     public function getTypeNameAttribute()
     {
-        return $this->attributes['type'] === 1 ? 'ACTIVE' : 'NON ACTIVE';
+        return array_flip(self::TYPE)[$this->attributes['type']];
+    }
+
+    public function getStatusNameAttribute()
+    {
+        return array_flip(self::STATUS)[$this->attributes['status']];
     }
 }
