@@ -27,10 +27,13 @@
             <div class="col-lg-4 mx-auto">
               <div class="auth-form-light text-left p-5">
                 <div class="brand-logo">
-                  <img src="{{ asset('PurpleAdmin') }}/assets/images/logo.svg">
+                  <center>
+                    <img src="{{ asset('Logo-Ibnu-Qayyim/Logo Horizontal.png') }}" class="img-fluid">
+                  </center>
+                  {{-- <h1 class="text-center">Ibnu Qoyyim</h1> --}}
                 </div>
-                <h4>Hello! let's get started</h4>
-                <h6 class="font-weight-light">Sign in to continue.</h6>
+                <h4>Sign In</h4>
+                {{-- <h6 class="font-weight-light">Sign in to continue.</h6> --}}
                 <form class="pt-3" method="POST" action="{{ route('login') }}">
                     @csrf
                   <div class="form-group">
