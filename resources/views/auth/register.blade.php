@@ -61,7 +61,7 @@
                         </a>
                     @endif
                   </div>
-                  <div class="text-center mt-4 font-weight-light"> Don't have an account? <a href="{{ route('register') }}" class="text-primary">Register</a>
+                  <div class="text-center mt-4 font-weight-light"> Do you have an account? <a href="{{ route('login') }}" class="text-primary">Login</a>
                   </div>
                 </form>
               </div>

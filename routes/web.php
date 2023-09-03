@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContentSettingController;
+use App\Http\Controllers\RegionController;
 use App\Http\Controllers\RegistrationScheduleController;
 use App\Http\Controllers\SchoolProfileController;
 
@@ -18,6 +19,10 @@ use App\Http\Controllers\SchoolProfileController;
 
 Auth::routes();
 Route::get('/', [App\Http\Controllers\Frontsite\HomeController::class,'index']);
+
+Route::post('/city', [RegionController::class,'getCityByProvinceID']);
+Route::post('/district', [RegionController::class,'getDistrictByCityID']);
+Route::post('/village', [RegionController::class,'getVillageByDistrictID']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -36,4 +41,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile-sekolah-store', [SchoolProfileController::class, 'store']);
 
     Route::get('/register-schedule', [RegistrationScheduleController::class, 'index']);
+    Route::get('/register-schedule-form/{scheduleId}', [RegistrationScheduleController::class, 'create']);
+    Route::post('/register-schedule-store', [RegistrationScheduleController::class, 'store']);
 });

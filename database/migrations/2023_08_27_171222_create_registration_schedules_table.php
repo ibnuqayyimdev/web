@@ -14,12 +14,15 @@ return new class extends Migration
         Schema::create('registration_schedules', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug');
             $table->text('description');
             $table->tinyInteger('type');
+            $table->tinyInteger('status');
             $table->dateTime('start_date');
             $table->dateTime('end_date');
             $table->string('period');
             $table->integer('batch');
+            $table->integer('registration_fee');
             $table->text('extra_attributes')->nullable()->default(null);
             $table->timestamps();
         });

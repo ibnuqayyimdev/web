@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helper\Helper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,9 +16,21 @@ class ContentSetting extends Model
         'FRONTSITE' => 1,
     ];
 
-    const STATUS = [
-        'NON_ACTIVE' => 0,
-        'ACTIVE' => 1,
+
+
+    const FRONTSITE_SECTION = [
+        'feature-service-section',
+        'cta-section',
+        'about-section',
+        'count-section',
+        'feature-section',
+        'fasility-section',
+        'activity-section',
+        'testimonial-section',
+        'teacher-section',
+        'gallery-section',
+        'faq-section',
+        'contact-section'
     ];
 
     public function getTypeNameAttribute()
@@ -27,6 +40,6 @@ class ContentSetting extends Model
 
     public function getStatusNameAttribute()
     {
-        return array_flip(self::STATUS)[$this->attributes['status']];
+        return array_flip(Helper::STATUS)[$this->attributes['status']];
     }
 }

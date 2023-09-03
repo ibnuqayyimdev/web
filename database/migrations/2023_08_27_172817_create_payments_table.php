@@ -20,9 +20,6 @@ return new class extends Migration
             $table->tinyInteger('status');
             $table->text('extra_attributes')->nullable()->default(null);
             $table->timestamps();
-
-            // Define foreign key constraint
-            $table->foreign('model_id')->references('id')->on('student_registers');
         });
     }
 

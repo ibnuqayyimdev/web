@@ -18,6 +18,7 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('PurpleAdmin/assets/images/favicon.ico') }}" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @stack('style')
   </head>
   <body>
@@ -91,6 +92,12 @@
                     break;
             }
         @endif
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
     </script>
     @stack('script')
   </body>

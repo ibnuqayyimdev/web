@@ -5,15 +5,18 @@ namespace App\Http\Controllers\Frontsite;
 use App\Http\Controllers\Controller;
 use App\Models\ContentSetting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
     public function index() {
-        $data['guru'] = ContentSetting::where('name','guru')->first();
-        $data['galery'] = ContentSetting::where('name','galery')->first();
-        $data['kegiatanSiswa'] = ContentSetting::where('name','kegiatan-siswa')->first();
-        $data['fasilitasPendidikan'] = ContentSetting::where('name','fasilitas-pendidikan')->first();
-        $data['testimonial'] = ContentSetting::where('name','testimonial')->first();
+        $sectionName = ContentSetting::FRONTSITE_SECTION;
+        $ContentSettings = ContentSetting::whereIn('name',$sectionName)->get();
+        $data = [];
+        foreach ($ContentSettings as $key => $ContentSetting) {
+            $key = Str::camel($ContentSetting->name);
+            $data[$key] = $ContentSetting;
+        }
         return view('frontsite.pages.home.index',$data);
     }
 }

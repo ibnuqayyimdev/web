@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('attachments', function (Blueprint $table) {
+        Schema::create('student_attachments', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('register_id');
             $table->string('file_name');
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->timestamps();
 
             // Define foreign key constraint
-            $table->foreign('register_id')->references('id')->on('student_registers');
+            $table->foreign('register_id')->references('id')->on('student_registrations');
         });
     }
 

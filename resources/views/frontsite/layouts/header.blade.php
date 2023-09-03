@@ -33,7 +33,7 @@
 
       <a href="{{ route('register') }}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Daftar</span> Sekarang</a>
       @if (!auth()->check())
-      <a href="{{ route('register') }}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Login</span></a>
+      <a href="{{ route('login') }}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Login</span></a>
       @endif
 
     </div>
