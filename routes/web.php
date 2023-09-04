@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/content_settings/update_status/{id}', [ContentSettingController::class, 'updateStatus'])->name('content_settings.update_status');
     Route::get('/content_settings/edit/{id}', [ContentSettingController::class, 'edit'])->name('content_settings.edit');
     Route::patch('/content_settings/update/{id}', [ContentSettingController::class, 'update'])->name('content_settings.update');
+    Route::delete('content_settings/delete/{id}', [ContentSettingController::class, 'destroy'])->name('content_settings.delete');
 
 
 

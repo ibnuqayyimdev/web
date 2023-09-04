@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\Helper;
 use App\Models\ContentSetting;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ContentSettingController extends Controller
 {
@@ -18,7 +20,7 @@ class ContentSettingController extends Controller
     public function create()
     {
         $data['types'] = ContentSetting::TYPE;
-        return view('backsite.pages.content_settings.create',$data);
+        return view('backsite.pages.content_settings.create', $data);
     }
 
     public function store(Request $request)
@@ -29,16 +31,16 @@ class ContentSettingController extends Controller
         ]);
 
         try {
-            $validatedData['status'] = ContentSetting::STATUS['ACTIVE'];
+            $validatedData['status'] = Helper::STATUS['ACTIVE'];
             ContentSetting::create($validatedData);
         } catch (Exception $e) {
-            if(env('APP_ENV') == 'local'){
+            if (env('APP_ENV') == 'local') {
                 dd($e);
             }
-            return back()->with(['message' => 'Something went wrong!','alert-type' => 'error']);
+            return back()->with(['message' => 'Something went wrong!', 'alert-type' => 'error']);
         }
 
-        return redirect()->route('content_settings.list')->with(['message' => 'Data created successfull!','alert-type' => 'success']);
+        return redirect()->route('content_settings.list')->with(['message' => 'Data created successfull!', 'alert-type' => 'success']);
     }
 
     public function updateStatus($id)
@@ -59,8 +61,30 @@ class ContentSettingController extends Controller
     public function update(Request $request, $id)
     {
         $contentSetting = ContentSetting::findOrFail($id);
-        $contentSetting->update($request->all());
 
-        return redirect()->route('content_settings.list');
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'type' => 'required|numeric|max:255'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('content_settings.edit', $id)
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $contentSetting->name = $request->input('name');
+        $contentSetting->type = $request->input('type');
+        $contentSetting->save();
+
+        return redirect()->route('content_settings.list')->with(['message' => 'Data updated successfull!', 'alert-type' => 'success']);
+    }
+
+    public function destroy($id)
+    {
+        $contentSetting = ContentSetting::findOrFail($id);
+        $contentSetting->delete();
+
+        return redirect()->route('content_settings.list')->with(['message' => 'Data deleted successfull!', 'alert-type' => 'success']);
     }
 }

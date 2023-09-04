@@ -39,6 +39,13 @@
                             <a href="{{ route('content_settings.edit', $dataContentSettings->id) }}"
                                 class="btn btn-primary btn-sm">Edit</a>
                         </td>
+                        <td>
+                            <form action="{{ route('content_settings.delete', $dataContentSettings->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

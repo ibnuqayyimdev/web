@@ -27,10 +27,10 @@
                 <label for="extra_attributes" class="form-label">Extra Attributes</label>
                 <input type="text" class="form-control" id="extra_attributes" name="extra_attributes">
             </div> --}}
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label for="status" class="form-label">Status</label><br>
                 <input type="checkbox" class="form-check-input" id="status" name="status" disabled>
-            </div>
+            </div> --}}
             <button type="submit" class="btn btn-primary">Save Changes</button>
         </form>
     </div>
