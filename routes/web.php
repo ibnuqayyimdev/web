@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContentSettingController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\RegistrationScheduleController;
 use App\Http\Controllers\SchoolProfileController;
@@ -44,4 +45,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/register-schedule', [RegistrationScheduleController::class, 'index']);
     Route::get('/register-schedule-form/{scheduleId}', [RegistrationScheduleController::class, 'create']);
     Route::post('/register-schedule-store', [RegistrationScheduleController::class, 'store']);
+
+    Route::get('/gallery', [GalleryController::class, 'index']);
 });
