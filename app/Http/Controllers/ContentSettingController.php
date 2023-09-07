@@ -55,7 +55,8 @@ class ContentSettingController extends Controller
     public function edit($id)
     {
         $contentSetting = ContentSetting::findOrFail($id);
-        return view('backsite.pages.content_settings.edit', compact('contentSetting'));
+        $types = ContentSetting::TYPE;
+        return view('backsite.pages.content_settings.edit', compact('contentSetting', 'types'));
     }
 
     public function update(Request $request, $id)
@@ -64,7 +65,7 @@ class ContentSettingController extends Controller
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'type' => 'required|numeric|max:255'
+            'type' => 'required|string|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -77,7 +78,7 @@ class ContentSettingController extends Controller
         $contentSetting->type = $request->input('type');
         $contentSetting->save();
 
-        return redirect()->route('content_settings.list')->with(['message' => 'Data updated successfull!', 'alert-type' => 'success']);
+        return redirect()->route('content_settings.list')->with(['message' => 'Data updated successfully!', 'alert-type' => 'success']);
     }
 
     public function destroy($id)
