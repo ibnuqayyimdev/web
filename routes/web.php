@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContentSettingController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\RegistrationScheduleController;
 use App\Http\Controllers\SchoolProfileController;
+use App\Http\Controllers\TagController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +40,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('content_settings/delete/{id}', [ContentSettingController::class, 'destroy'])->name('content_settings.delete');
 
 
-
     Route::get('/profile-sekolah', [SchoolProfileController::class, 'index']);
     Route::post('/profile-sekolah-store', [SchoolProfileController::class, 'store']);
 
@@ -46,5 +47,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/register-schedule-form/{scheduleId}', [RegistrationScheduleController::class, 'create']);
     Route::post('/register-schedule-store', [RegistrationScheduleController::class, 'store']);
 
-    Route::get('/gallery', [GalleryController::class, 'index']);
+    // Route::get('/gallery', [GalleryController::class, 'index']);
+
+    Route::resource('tag',TagController::class);
+    Route::patch('tag/update_status/{id}', [TagController::class, 'updateStatus'])->name('tag.update_status');
+
+    Route::resource('category',CategoryController::class);
+    Route::patch('category/update_status/{id}', [CategoryController::class, 'updateStatus'])->name('tag.update_status');
 });
