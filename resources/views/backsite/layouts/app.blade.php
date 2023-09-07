@@ -98,6 +98,13 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+
+        $('form').submit(function (e) {
+            e.preventDefault();
+            $('button').attr('disabled',true)
+            $('a').attr('disabled',true)
+            this.submit()
+        });
     </script>
     @stack('script')
   </body>
