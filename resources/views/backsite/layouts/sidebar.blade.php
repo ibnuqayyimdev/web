@@ -76,6 +76,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="{{ url('student-registration') }}">
+                <span class="menu-title">Pembukaan PPDB</span>
+                <i class="mdi mdi-view-dashboard menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="{{ url('/') }}">
                 <span class="menu-title">Kembali Ke Halaman Utama</span>
                 <i class="mdi mdi-keyboard-backspace menu-icon"></i>
