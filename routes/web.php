@@ -8,6 +8,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\RegistrationScheduleController;
 use App\Http\Controllers\SchoolProfileController;
+use App\Http\Controllers\StudentRegistrationController;
 use App\Http\Controllers\TagController;
 
 /*
@@ -44,10 +45,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile-sekolah', [SchoolProfileController::class, 'index']);
     Route::post('/profile-sekolah-store', [SchoolProfileController::class, 'store']);
 
-    // Route::get('/register-schedule', [RegistrationScheduleController::class, 'index']);
-    Route::get('/register-schedule-form/{scheduleId}', [RegistrationScheduleController::class, 'create']);
-    // Route::post('/register-schedule-store', [RegistrationScheduleController::class, 'store']);
-
     Route::get('/register-schedule', [RegistrationScheduleController::class, 'index'])->name('register-schedule.index');
     Route::get('/register-schedule/create', [RegistrationScheduleController::class, 'create'])->name('register-schedule.create');
     Route::post('/register-schedule/store', [RegistrationScheduleController::class, 'store'])->name('register-schedule.store');
@@ -65,4 +62,8 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('article',ArticleController::class);
     Route::patch('article/update_status/{id}', [ArticleController::class, 'updateStatus'])->name('article.update_status');
+
+    Route::get('/student-registration', [StudentRegistrationController::class, 'index']);
+    Route::get('/student-registration-form/{slug}', [StudentRegistrationController::class, 'create']);
+    Route::post('/student-registration-store', [StudentRegistrationController::class, 'store']);
 });
