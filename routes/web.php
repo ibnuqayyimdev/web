@@ -21,11 +21,11 @@ use App\Http\Controllers\TagController;
 */
 
 Auth::routes();
-Route::get('/', [App\Http\Controllers\Frontsite\HomeController::class,'index']);
+Route::get('/', [App\Http\Controllers\Frontsite\HomeController::class, 'index']);
 
-Route::post('/city', [RegionController::class,'getCityByProvinceID']);
-Route::post('/district', [RegionController::class,'getDistrictByCityID']);
-Route::post('/village', [RegionController::class,'getVillageByDistrictID']);
+Route::post('/city', [RegionController::class, 'getCityByProvinceID']);
+Route::post('/district', [RegionController::class, 'getDistrictByCityID']);
+Route::post('/village', [RegionController::class, 'getVillageByDistrictID']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -43,15 +43,22 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile-sekolah', [SchoolProfileController::class, 'index']);
     Route::post('/profile-sekolah-store', [SchoolProfileController::class, 'store']);
 
-    Route::get('/register-schedule', [RegistrationScheduleController::class, 'index']);
-    Route::get('/register-schedule-form/{scheduleId}', [RegistrationScheduleController::class, 'create']);
-    Route::post('/register-schedule-store', [RegistrationScheduleController::class, 'store']);
+    // Route::get('/register-schedule', [RegistrationScheduleController::class, 'index']);
+    // Route::get('/register-schedule-form/{scheduleId}', [RegistrationScheduleController::class, 'create']);
+    // Route::post('/register-schedule-store', [RegistrationScheduleController::class, 'store']);
+
+    Route::get('/register-schedule', [RegistrationScheduleController::class, 'index'])->name('register-schedule.index');
+    Route::get('/register-schedule/create', [RegistrationScheduleController::class, 'create'])->name('register-schedule.create');
+    Route::post('/register-schedule/store', [RegistrationScheduleController::class, 'store'])->name('register-schedule.store');
+    Route::get('/register-schedule/edit/{id}', [RegistrationScheduleController::class, 'edit'])->name('register-schedule.edit');
+    Route::patch('/register-schedule/update/{id}', [RegistrationScheduleController::class, 'update'])->name('register-schedule.update');
+    Route::delete('/register-schedule/delete/{id}', [RegistrationScheduleController::class, 'destroy'])->name('register-schedule.delete');
 
     // Route::get('/gallery', [GalleryController::class, 'index']);
 
-    Route::resource('tag',TagController::class);
+    Route::resource('tag', TagController::class);
     Route::patch('tag/update_status/{id}', [TagController::class, 'updateStatus'])->name('tag.update_status');
 
-    Route::resource('category',CategoryController::class);
+    Route::resource('category', CategoryController::class);
     Route::patch('category/update_status/{id}', [CategoryController::class, 'updateStatus'])->name('tag.update_status');
 });
