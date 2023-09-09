@@ -1,113 +1,106 @@
 @extends('backsite.layouts.app')
 @push('style')
-    <style></style>
+<style>
+    :root {
+        --red: #DC4535;
+        --white: #f2edf3; 
+        --green: #198754;
+    }
+
+    .red {
+        background-color: var(--red);
+        color: var(--white);
+    }
+
+    .ticket-card {
+        padding: 10px;
+        background-color:var(--green);
+        color: var(--white);
+    }
+</style>
 @endpush
 @section('content')
-    <section>
-        <h3>Pembukaan Yang Tersedia :</h3>
-        <div class="row mt-5">
-            @forelse ($RegistrationSchedule as $item)
-                <div class="col-md-6 grid-margin stretch-card">
-                    <div class="card">
-                        <div class="card-header">
-                            <center>
-                                <img class="img-fluid w-50" src="{{ asset('Logo-Ibnu-Qayyim/Logo Horizontal.png') }}" alt="">
-                            </center>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <a href="{{ route('register-schedule.create') }}" class="btn btn-primary mb-3">Add</a>
+        </div>
+    </div>
+    <div class="row">
+        @foreach($registrationSchedule as $schedule)
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <center>
+                        <img class="img-fluid w-50" src="{{ asset('Logo-Ibnu-Qayyim/Logo Horizontal.png') }}" alt="">
+                    </center>
+                </div>
+                <div class="card-body py-3 px-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3 class="card-text mb-0">{{ $schedule->title }}</h3>
+                        <p class="card-text">
+                            @if ($schedule->status == 1)
+                            <span class="badge bg-success float-right">Buka</span>
+                            @else
+                            <span class="badge bg-danger float-right">Tutup</span>
+                            @endif
+                        </p>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <h6>Tanggal Mulai:</h6>
+                            <p>{{ \Carbon\Carbon::parse($schedule->start_date)->translatedFormat('d F Y') }}</p>
                         </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h6>Judul :</h6>
-                                    <p>{{ $item->title }}</p>
+                        <div class="col-md-6">
+                            <h6>Tanggal Akhir:</h6>
+                            <p>{{ \Carbon\Carbon::parse($schedule->end_date)->translatedFormat('d F Y') }}</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Tahun Ajaran:</h6>
+                            <p>{{ $schedule->period }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Gelombang:</h6>
+                            <p>{{ $schedule->batch }}</p>
+                        </div>
+                    </div>
+                    <p class="card-text ticket-card text-center"><strong>Biaya Pendaftaran:</strong> Rp {{ number_format($schedule->registration_fee, 0, ',', ',') }}</p>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{{ route('register-schedule.edit', $schedule->id) }}" class="btn btn-warning btn-block">Edit</a>
+                    <a href="{{ route('register-schedule.delete', $schedule->id) }}" class="btn red btn-block" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $schedule->id ?>">Delete</a>
+                    <div class="modal fade" id="deleteModal<?= $schedule->id ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <div class="col-md-6">
-                                    <h6>Tahun Ajaran :</h6>
-                                    <p>{{ $item->period }}</p>
+                                <div class="modal-body">
+                                    Are you sure you want to delete this data?
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h6>Tanggal Mulai :</h6>
-                                    <p>{{ $item->start_date }}</p>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <form action="{{ route('register-schedule.delete', $schedule->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger red">Delete</button>
+                                    </form>
                                 </div>
-                                <div class="col-md-6">
-                                    <h6>Tanggal Akhir :</h6>
-                                    <p>{{ $item->end_date }}</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h6>Gelombang :</h6>
-                                    <p>{{ $item->batch }}</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <h6>Biaya Pendaftaran :</h6>
-                                    <p>Rp {{ number_format($item->registration_fee,2,',','.') }}</p>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <a href="{{ url("register-schedule-form/$item->slug") }}" class="btn btn-success ">Daftar</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            @empty
-                <center>
-                    <h6>Sedang tidak ada pembukaan!</h6>
-                </center>
-            @endforelse
-        </div>
-        <div class="col-lg-12 grid-margin stretch-card mt-5">
-            <div class="card">
-              <div class="card-body">
-                <h4 class="card-title">Pendaftaran Saya</h4>
-                <p class="card-description">
-                    List Pendaftaran Yang Sudah Di Submit
-                </p>
-                <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
-                          <tr>
-                            <th> User </th>
-                            <th> Nama Depan </th>
-                            <th> Nama Belakang </th>
-                            <th> Status Pendaftaran</th>
-                            <th> Terdaftar</th>
-                            <th> Tahun Ajaran</th>
-                            <th> Aksi </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td class="py-1">
-                              <img src="{{ asset('PurpleAdmin') }}/assets/images/faces-clipart/pic-1.png" alt="image" />
-                            </td>
-                            <td> Herman </td>
-                            <td> Beck </td>
-                            <td><label class="badge badge-success">Lulus</label></td>
-                            <td>Pembukaan PPDB SMP Ibnu Qoyyim</td>
-                            <td>2023/2024</td>
-                            <td><button class="btn btn-success">Lihat</button></td>
-                          </tr>
-                          <tr>
-                            <td class="py-1">
-                              <img src="{{ asset('PurpleAdmin') }}/assets/images/faces-clipart/pic-1.png" alt="image" />
-                            </td>
-                            <td> Herman </td>
-                            <td> Beck </td>
-                            <td><label class="badge badge-success">Lulus</label></td>
-                            <td>Pembukaan PPDB SMP Ibnu Qoyyim</td>
-                            <td>2023/2024</td>
-                            <td><button class="btn btn-success">Lihat</button></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                </div>
-              </div>
             </div>
         </div>
-    </section>
+        @endforeach
+    </div>
+</div>
+
 @endsection
 @push('script')
-    <script></script>
+<script></script>
 @endpush

@@ -9,15 +9,34 @@ class RegistrationSchedule extends Model
 {
     use HasFactory;
 
-    const BATCH = [
-        1 => 'Pertama',
-        2 => 'Kedua',
-        3 => 'Ketiga',
-        4 => 'Keempat',
-        5 => 'Kelima',
+    protected $fillable = [
+        'title',
+        'slug',
+        'description',
+        'status',
+        'type',
+        'start_date',
+        'end_date',
+        'period',
+        'batch',
+        'registration_fee',
+        'extra_attributes',
     ];
 
-    public function getBatchAttribute($value) {
-        return self::BATCH[$value];
+    public static function rules()
+    {
+        return [
+            'title' => 'required|string|max:255',
+            'slug' => 'required|string|unique:register_schedules,slug',
+            'description' => 'required|string',
+            'status' => 'required|in:0,1',
+            'type' => 'required|in:1,2',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+            'period' => 'required|string|max:255',
+            'batch' => 'required|integer',
+            'registration_fee' => 'required|numeric',
+            'extra_attributes' => 'nullable|string',
+        ];
     }
 }
