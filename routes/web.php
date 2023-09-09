@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContentSettingController;
@@ -53,5 +54,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('tag/update_status/{id}', [TagController::class, 'updateStatus'])->name('tag.update_status');
 
     Route::resource('category',CategoryController::class);
-    Route::patch('category/update_status/{id}', [CategoryController::class, 'updateStatus'])->name('tag.update_status');
+    Route::patch('category/update_status/{id}', [CategoryController::class, 'updateStatus'])->name('category.update_status');
+
+    Route::resource('article',ArticleController::class);
+    Route::patch('article/update_status/{id}', [ArticleController::class, 'updateStatus'])->name('article.update_status');
 });
