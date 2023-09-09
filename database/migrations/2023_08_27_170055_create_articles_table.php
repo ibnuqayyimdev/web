@@ -14,10 +14,13 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug');
             $table->text('body')->comment('Content of the post');
             $table->unsignedBigInteger('user_id');
             $table->tinyInteger('status');
-            $table->tinyInteger('type')->comment('ARTICLE/PENGUMUMAN');
+            $table->integer('type')->comment('ARTICLE/PENGUMUMAN');
+            $table->string('thumbnail');
+            $table->integer('category_id');
             $table->text('extra_attributes')->nullable()->default(null);
             $table->timestamps();
 
@@ -25,8 +28,9 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
 
             // Indexes for performance
-            $table->index('status');
-            $table->index('type');
+            $table->index('id');
+            $table->index('slug');
+            $table->index('category_id');
         });
     }
 

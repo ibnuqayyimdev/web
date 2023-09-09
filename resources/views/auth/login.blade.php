@@ -31,8 +31,18 @@
                     <img src="{{ asset('Logo-Ibnu-Qayyim/Logo Horizontal.png') }}" class="img-fluid">
                   </center>
                   {{-- <h1 class="text-center">Ibnu Qoyyim</h1> --}}
+
                 </div>
                 <h4>Sign In</h4>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 {{-- <h6 class="font-weight-light">Sign in to continue.</h6> --}}
                 <form class="pt-3" method="POST" action="{{ route('login') }}">
                     @csrf

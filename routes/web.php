@@ -45,7 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile-sekolah-store', [SchoolProfileController::class, 'store']);
 
     // Route::get('/register-schedule', [RegistrationScheduleController::class, 'index']);
-    // Route::get('/register-schedule-form/{scheduleId}', [RegistrationScheduleController::class, 'create']);
+    Route::get('/register-schedule-form/{scheduleId}', [RegistrationScheduleController::class, 'create']);
     // Route::post('/register-schedule-store', [RegistrationScheduleController::class, 'store']);
 
     Route::get('/register-schedule', [RegistrationScheduleController::class, 'index'])->name('register-schedule.index');

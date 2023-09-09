@@ -32,11 +32,20 @@
                   {{-- <h1 class="text-center">Register</h1> --}}
                 </div>
                 <h4>Register</h4>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 {{-- <h6 class="font-weight-light">Sign in to continue.</h6> --}}
                 <form class="pt-3" method="POST" action="{{ route('register') }}">
                     @csrf
                   <div class="form-group">
-                    <input name="name" type="text" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Name">
+                    <input name="name" type="text" class="form-control form-control-lg @error('email') is-invalid @enderror" id="exampleInputEmail1" placeholder="Name">
                   </div>
                   <div class="form-group">
                     <input name="email" type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email">

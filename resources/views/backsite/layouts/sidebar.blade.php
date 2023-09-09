@@ -70,6 +70,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="{{ url('article') }}">
+                <span class="menu-title">Article</span>
+                <i class="mdi mdi-view-dashboard menu-icon"></i>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="{{ url('/') }}">
                 <span class="menu-title">Kembali Ke Halaman Utama</span>
                 <i class="mdi mdi-keyboard-backspace menu-icon"></i>

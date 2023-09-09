@@ -1,6 +1,7 @@
 @extends('backsite.layouts.app')
 @push('style')
-<style></style>
+<style>
+</style>
 @endpush
 @section('content')
 <div class="container">
