@@ -24,6 +24,7 @@ use App\Http\Controllers\TagController;
 
 Auth::routes();
 Route::get('/', [App\Http\Controllers\Frontsite\HomeController::class, 'index']);
+Route::get('/article/{slug}', [App\Http\Controllers\Frontsite\HomeController::class, 'articleDetail']);
 
 Route::post('/city', [RegionController::class, 'getCityByProvinceID']);
 Route::post('/district', [RegionController::class, 'getDistrictByCityID']);
