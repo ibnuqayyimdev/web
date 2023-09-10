@@ -16,7 +16,16 @@ class StudentRegistration extends Model
         'ACCEPTED' => 3,
     ];
 
+    public function registrationSchedule(){
+        return $this->belongsTo(RegistrationSchedule::class,'registration_schedule_id','id');
+    }
+
     public function attachments(){
         return $this->hasMany(StudentAttachment::class,'register_id','id');
     }
+
+    public function getStatusNameAttribute(){
+        return array_flip(self::STATUS)[$this->attributes['status']];
+    }
+
 }

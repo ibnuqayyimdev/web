@@ -50,7 +50,7 @@
     <div class="row mt-5">
         <h3>Pembukaan Yang Tersedia :</h3>
         @forelse ($RegistrationSchedule as $item)
-        <div class="col-md-6 mb-4">
+        <div class="col-md-6 mb-4 mt-3">
             <div class="card">
                 <div class="card-header">
                     <center>
@@ -123,28 +123,37 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="py-1">
-                                    <img src="{{ asset('PurpleAdmin') }}/assets/images/faces-clipart/pic-1.png" alt="image" />
-                                </td>
-                                <td> Herman </td>
-                                <td> Beck </td>
-                                <td><label class="badge badge-success">Lulus</label></td>
-                                <td>Pembukaan PPDB SMP Ibnu Qoyyim</td>
-                                <td>2023/2024</td>
-                                <td><button class="btn btn-success">Lihat</button></td>
-                            </tr>
-                            <tr>
-                                <td class="py-1">
-                                    <img src="{{ asset('PurpleAdmin') }}/assets/images/faces-clipart/pic-1.png" alt="image" />
-                                </td>
-                                <td> Herman </td>
-                                <td> Beck </td>
-                                <td><label class="badge badge-success">Lulus</label></td>
-                                <td>Pembukaan PPDB SMP Ibnu Qoyyim</td>
-                                <td>2023/2024</td>
-                                <td><button class="btn btn-success">Lihat</button></td>
-                            </tr>
+                            @foreach ($StudentRegistration as $item)
+                                <tr>
+                                    <td class="py-1">
+                                        <img src="{{ asset('PurpleAdmin') }}/assets/images/faces-clipart/pic-1.png" alt="image" />
+                                    </td>
+                                    <td> {{ $item->first_name }} </td>
+                                    <td> {{ $item->last_name }} </td>
+                                    <td>
+                                        @php
+                                            switch ($item->status) {
+                                                case '1':
+                                                    $labelClass = 'warning';
+                                                    break;
+                                                case '2':
+                                                    $labelClass = 'danger';
+                                                    break;
+                                                case '3':
+                                                    $labelClass = 'success';
+                                                    break;
+                                                default:
+                                                    $labelClass = 'secondary';
+                                                    break;
+                                            }
+                                        @endphp
+                                        <label class="badge badge-{{ $labelClass}}">{{ $item->status_name }}</label>
+                                    </td>
+                                    <td>{{ $item->registrationSchedule->title }}</td>
+                                    <td>{{ $item->registrationSchedule->period  }}</td>
+                                    <td><a href="{{ url('student-registration-form-detail/'.$item->id) }}" class="btn btn-success">Lihat</a></td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

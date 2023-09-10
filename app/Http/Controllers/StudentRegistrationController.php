@@ -20,6 +20,8 @@ class StudentRegistrationController extends Controller
     {
         App::setLocale('id');
         $data['RegistrationSchedule'] = RegistrationSchedule::where('status',Helper::STATUS['ACTIVE'])->get();
+        $data['StudentRegistration'] = StudentRegistration::with('registrationSchedule')->where('user_id',auth()->user()->id)->get();
+
         return view('backsite.pages.student-registration.index',$data);
     }
 
@@ -142,7 +144,12 @@ class StudentRegistrationController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data['genders'] = Helper::genderList('ARABIC');
+        $data['provinces'] = \Indonesia::allProvinces();
+        $data['StudentRegistration'] = StudentRegistration::find($id);
+        // dd($data);
+
+        return view('backsite.pages.student-registration.edit', $data);
     }
 
     /**

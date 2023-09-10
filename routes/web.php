@@ -66,5 +66,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/student-registration', [StudentRegistrationController::class, 'index']);
     Route::get('/student-registration-form/{slug}', [StudentRegistrationController::class, 'create']);
+    Route::get('/student-registration-form-detail/{id}', [StudentRegistrationController::class, 'edit']);
     Route::post('/student-registration-store', [StudentRegistrationController::class, 'store']);
 });
