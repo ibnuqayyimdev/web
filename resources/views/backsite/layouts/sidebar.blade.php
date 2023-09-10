@@ -23,7 +23,7 @@
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
                 aria-controls="ui-basic">
-                <span class="menu-title">Contents</span>
+                <span class="menu-title">Konten</span>
                 <i class="menu-arrow"></i>
                 <i class="mdi mdi-view-dashboard menu-icon"></i>
             </a>
@@ -36,24 +36,24 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ url('content_settings/list') }}">
-                <span class="menu-title">Settings</span>
+                <span class="menu-title">Pengaturan</span>
                 <i class="mdi mdi-view-dashboard menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ url('register-schedule') }}">
-                <span class="menu-title">PPDB</span>
+                <span class="menu-title">Jadwal PPDB</span>
                 <i class="mdi mdi-view-dashboard menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ url('profile-sekolah') }}">
-                <span class="menu-title">Profile Sekolah</span>
+                <span class="menu-title">Profil Sekolah</span>
                 <i class="mdi mdi-view-dashboard menu-icon"></i> </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ url('gallery') }}">
-                <span class="menu-title">Gallery</span>
+                <span class="menu-title">Galeri</span>
                 <i class="mdi mdi-view-dashboard menu-icon"></i>
             </a>
         </li>
@@ -65,19 +65,19 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ url('category') }}">
-                <span class="menu-title">Category</span>
+                <span class="menu-title">Kategori</span>
                 <i class="mdi mdi-view-dashboard menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ url('article') }}">
-                <span class="menu-title">Article</span>
+                <span class="menu-title">Artikel</span>
                 <i class="mdi mdi-view-dashboard menu-icon"></i>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ url('student-registration') }}">
-                <span class="menu-title">Pembukaan PPDB</span>
+                <span class="menu-title">Pendaftaran PPDB</span>
                 <i class="mdi mdi-view-dashboard menu-icon"></i>
             </a>
         </li>

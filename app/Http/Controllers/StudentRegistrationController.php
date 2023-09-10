@@ -9,6 +9,7 @@ use App\Models\StudentRegistration;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\App;
 
 class StudentRegistrationController extends Controller
 {
@@ -17,6 +18,7 @@ class StudentRegistrationController extends Controller
      */
     public function index()
     {
+        App::setLocale('id');
         $data['RegistrationSchedule'] = RegistrationSchedule::where('status',Helper::STATUS['ACTIVE'])->get();
         return view('backsite.pages.student-registration.index',$data);
     }

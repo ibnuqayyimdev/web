@@ -11,7 +11,7 @@ class RegistrationScheduleController extends Controller
     public function index()
     {
         App::setLocale('id');
-        $data['registrationSchedule'] = RegistrationSchedule::all();
+        $data['registrationSchedule'] = RegistrationSchedule::orderBy('batch', 'desc')->get();
         return view('backsite.pages.register-schedule.index', $data);
     }
 
@@ -24,7 +24,6 @@ class RegistrationScheduleController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
-            'slug' => 'required|string|unique:registration_schedules,slug',
             'description' => 'required|string',
             'status' => 'required|in:0,1',
             'type' => 'required|in:1,2',
@@ -32,8 +31,7 @@ class RegistrationScheduleController extends Controller
             'end_date' => 'required|date',
             'period' => 'required|string|max:255',
             'batch' => 'required|integer',
-            'registration_fee' => 'required|numeric',
-            'extra_attributes' => 'nullable|string',
+            'registration_fee' => 'required|numeric'
         ]);
 
         try {
@@ -58,7 +56,6 @@ class RegistrationScheduleController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
-            'slug' => 'required|string|unique:registration_schedules,slug,' . $id,
             'description' => 'required|string',
             'status' => 'required|in:0,1',
             'type' => 'required|in:1,2',
@@ -66,8 +63,7 @@ class RegistrationScheduleController extends Controller
             'end_date' => 'required|date',
             'period' => 'required|string|max:255',
             'batch' => 'required|integer',
-            'registration_fee' => 'required|numeric',
-            'extra_attributes' => 'nullable|string',
+            'registration_fee' => 'required|numeric'
         ]);
 
         try {

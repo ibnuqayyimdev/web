@@ -20,14 +20,6 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="slug" class="form-label">Slug:</label>
-                        <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug">
-                        @error('slug')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
                         <label for="description" class="form-label">Description:</label>
                         <textarea class="form-control" id="description" name="description" rows="4"></textarea>
                     </div>
@@ -92,14 +84,6 @@
                         <label for="registration_fee" class="form-label">Registration Fee:</label>
                         <input type="number" class="form-control @error('registration_fee') is-invalid @enderror" id="registration_fee" name="registration_fee">
                         @error('registration_fee')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="extra_attributes" class="form-label">Extra Attributes:</label>
-                        <textarea class="form-control @error('extra_attributes') is-invalid @enderror" id="extra_attributes" name="extra_attributes" rows="4"></textarea>
-                        @error('extra_attributes')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
