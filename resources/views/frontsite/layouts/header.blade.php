@@ -8,7 +8,7 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto " href="{{ url('/') }}">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">Tentang Kami</a></li>
+          <li><a class="nav-link scrollto" href="#about">Tentang</a></li>
           <li><a class="nav-link scrollto" href="#services">Pendidikan</a></li>
           <li><a class="nav-link scrollto" href="#departments">Dakwah</a></li>
           <li><a class="nav-link scrollto" href="#doctors">Guru</a></li>
