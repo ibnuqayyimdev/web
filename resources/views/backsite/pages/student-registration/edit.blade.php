@@ -148,7 +148,7 @@
                                     <label class="col-sm-3 col-form-label">Nama Orang Tua/Wali</label>
                                     <div class="col-sm-9">
                                         <input type="text" class="form-control" name="parent_name"
-                                            value="{{ old('parent_name') }}" />
+                                            value="{{ $StudentRegistration->parent_name }}" />
                                     </div>
                                 </div>
                             </div>
