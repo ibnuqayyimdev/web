@@ -17,7 +17,7 @@
                             <div class="row">
                                 @foreach ($articles as $article)
                                 <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-                                        <a href="{{ url('article-show/'.$article->slug) }}">
+                                        <a href="{{ url('detail-article/'.$article->slug) }}">
                                             <div class="member" data-aos="fade-up" data-aos-delay="100">
                                                 <div class="member-img">
                                                     <img src="{{ asset('storage/'.$article->thumbnail) }}" class="img-fluid" alt=""  style="width: 300px; height: 250px;">

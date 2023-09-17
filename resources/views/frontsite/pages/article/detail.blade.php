@@ -58,7 +58,7 @@
                     </div>
                     <div class="card-body">
                         @foreach ($articles as $item)
-                        <a href="{{ url('article-show/'.$item->slug) }}">
+                        <a href="{{ url('detail-article/'.$item->slug) }}">
                             <div class="d-flex align-items-center mb-3">
                                 <img class="img-fluid me-4" src="{{ asset('storage/'.$item->thumbnail) }}" alt="" style="width: 100px;">
                                 <div class="">
