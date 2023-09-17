@@ -10,10 +10,11 @@ class StudentRegistration extends Model
     use HasFactory;
 
     const STATUS = [
-        'PENDING' => 0,
-        'PROCESS' => 1,
-        'NOT_ACCEPTED' => 2,
-        'ACCEPTED' => 3,
+        'NEW' => 0,
+        'PASSED' => 1,
+        'REVISED' => 2,
+        'PENDING' => 3,
+        'NOT_PASSED' => 4
     ];
 
     public function registrationSchedule(){

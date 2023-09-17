@@ -16,6 +16,25 @@ class StudentRegistrationController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function list()
+    {
+        App::setLocale('id');
+        $data['studentRegistration'] = StudentRegistration::all();
+        return view('backsite.pages.student-registration.list',$data);
+    }
+
+    public function detail(string $id)
+    {
+        try {
+            $data['studentRegistration'] = StudentRegistration::findOrFail($id);
+            $data['attachments'] = $data['studentRegistration']->attachments;
+            $data['provinces'] = \Indonesia::allProvinces();
+            return view('backsite.pages.student-registration.detail', $data);
+        } catch (\Exception $e) {
+            return redirect()->route('student-registration.list')->with(['error' => 'Something went wrong!', 'alert-type' => 'error']);
+        }
+    }
+
     public function index()
     {
         App::setLocale('id');
@@ -94,7 +113,7 @@ class StudentRegistrationController extends Controller
             $photo = $request->file('photo')->store('images', 'public');
             StudentAttachment::create([
                 'register_id' => $RegistrationSchedule->id,
-                'file_name' => 'PHOTO',
+                'file_name' => 'PAS FOTO',
                 'path' => $photo,
                 'status' => Helper::STATUS['ACTIVE'],
                 'type' => StudentAttachment::TYPE['PHOTO'],
@@ -103,7 +122,7 @@ class StudentRegistrationController extends Controller
             $ijasahOrSkl = $request->file('ijasah_or_skl')->store('images', 'public');
             StudentAttachment::create([
                 'register_id' => $RegistrationSchedule->id,
-                'file_name' => 'IJASAH_SKL',
+                'file_name' => 'IJAZAH SD',
                 'path' => $ijasahOrSkl,
                 'status' => Helper::STATUS['ACTIVE'],
                 'type' => StudentAttachment::TYPE['IJASAH_SKL'],
@@ -112,7 +131,7 @@ class StudentRegistrationController extends Controller
             $ktp = $request->file('ktp')->store('images', 'public');
             StudentAttachment::create([
                 'register_id' => $RegistrationSchedule->id,
-                'file_name' => 'KTP',
+                'file_name' => 'KTP Orangtua',
                 'path' => $ktp,
                 'status' => Helper::STATUS['ACTIVE'],
                 'type' => StudentAttachment::TYPE['KTP'],

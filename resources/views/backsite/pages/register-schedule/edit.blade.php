@@ -53,7 +53,7 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="start_date" class="form-label">Start Date:</label>
-                            <input type="date" class="form-control @error('start_date') is-invalid @enderror" id="start_date" name="start_date" value="{{ $registrationSchedule->start_date }}">
+                            <input type="date" class="form-control @error('start_date') is-invalid @enderror" id="start_date" name="start_date" value="{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $registrationSchedule->start_date)->format('Y-m-d') }}">
                             @error('start_date')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -61,7 +61,7 @@
 
                         <div class="mb-3">
                             <label for="end_date" class="form-label">End Date:</label>
-                            <input type="date" class="form-control @error('end_date') is-invalid @enderror" id="end_date" name="end_date" value="{{ $registrationSchedule->end_date }}">
+                            <input type="date" class="form-control @error('end_date') is-invalid @enderror" id="end_date" name="end_date" value="{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $registrationSchedule->end_date)->format('Y-m-d'); }}">
                             @error('end_date')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
