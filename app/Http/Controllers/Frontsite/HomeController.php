@@ -22,7 +22,8 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         // dd('ok');
         $appName = env('APP_NAME');
         $appDescription = 'ibnuqayyim.sch.id';
@@ -45,40 +46,44 @@ class HomeController extends Controller
         JsonLd::addImage(asset('Logo-Ibnu-Qayyim/Logo 2.png'));
 
         $sectionName = ContentSetting::FRONTSITE_SECTION;
-        $ContentSettings = ContentSetting::whereIn('name',$sectionName)->get();
+        $ContentSettings = ContentSetting::whereIn('name', $sectionName)->get();
         $data = [];
         foreach ($ContentSettings as $key => $ContentSetting) {
             $key = Str::camel($ContentSetting->name);
             $data[$key] = $ContentSetting;
         }
 
-        $data['articles'] = Article::with('tags')->orderBy('created_at','desc')->get();
+        $data['articles'] = Article::with('tags')->where('status', Helper::STATUS['ACTIVE'])->orderBy('created_at', 'desc')->get();
 
         // dd($data);
-        return view('frontsite.pages.home.index',$data);
+        return view('frontsite.pages.home.index', $data);
     }
 
-    public function articles(){
-        $data['articles'] = Article::with('tags')->orderBy('created_at','desc')->paginate(1);
+    public function articles()
+    {
+        $data['articles'] = Article::with('tags')
+            ->where('status', Helper::STATUS['ACTIVE'])
+            ->orderBy('created_at', 'desc')->paginate(1);
         // dd($data);
-        return view('frontsite.pages.article.index',$data);
+        return view('frontsite.pages.article.index', $data);
     }
 
-    public function articleDetail($slug){
-        $data['article'] = Article::with('category')->where('slug',$slug)->firstOrFail();
+    public function articleDetail($slug)
+    {
+        $data['article'] = Article::with('category')->where('slug', $slug)->firstOrFail();
         $data['articles'] = Article::latest()->take(5)->get();
         $data['categories'] = Category::select(
             'id',
             'name',
             DB::raw("(select count(*) from articles where category_id = categories.id) as count_articles"),
-        )->where('categories.status',Helper::STATUS['ACTIVE'])->get();
+        )->where('categories.status', Helper::STATUS['ACTIVE'])->get();
         // dd($data);
 
         SEOMeta::setTitle($data['article']->title);
         SEOMeta::setDescription($data['article']->body);
         SEOMeta::addMeta('article:published_time', $data['article']->created_at, 'property');
         SEOMeta::addMeta('article:section', $data['article']->category, 'property');
-        SEOMeta::addKeyword([$data['article']->title, 'ibnuqayyim', 'pendaftaran ibnuqayyim','pendaftaran ibnuqayyim jakarta','ibnuqayyim jakarta','smp ibnuqayyim']);
+        SEOMeta::addKeyword([$data['article']->title, 'ibnuqayyim', 'pendaftaran ibnuqayyim', 'pendaftaran ibnuqayyim jakarta', 'ibnuqayyim jakarta', 'smp ibnuqayyim']);
 
         OpenGraph::setDescription($data['article']->body);
         OpenGraph::setTitle($data['article']->title);
@@ -86,17 +91,15 @@ class HomeController extends Controller
         OpenGraph::addProperty('type', 'article');
         OpenGraph::addProperty('locale', 'id_ID');
 
-        OpenGraph::addImage(asset('storage/'.$data['article']->thumbnail));
+        OpenGraph::addImage(asset('storage/' . $data['article']->thumbnail));
         OpenGraph::addImage(['url' => asset('Logo-Ibnu-Qayyim/Logo 2.png'), 'size' => 300]);
         OpenGraph::addImage(asset('Logo-Ibnu-Qayyim/Logo 2.png'), ['height' => 300, 'width' => 300]);
 
         JsonLd::setTitle($data['article']->title);
         JsonLd::setDescription($data['article']->body);
         JsonLd::setType('Article');
-        JsonLd::addImage(asset('storage/'.$data['article']->thumbnail));
+        JsonLd::addImage(asset('storage/' . $data['article']->thumbnail));
 
-        return view('frontsite.pages.article.detail',$data);
+        return view('frontsite.pages.article.detail', $data);
     }
-
-
 }

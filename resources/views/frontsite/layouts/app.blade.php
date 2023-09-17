@@ -41,7 +41,7 @@
     {!! OpenGraph::generate() !!}
     {!! Twitter::generate() !!}
     {!! JsonLd::generate() !!}
-    // OR with multi
+     {{-- OR with multi --}}
     {!! JsonLdMulti::generate() !!}
 
   @stack('style')

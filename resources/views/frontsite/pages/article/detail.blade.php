@@ -1,4 +1,12 @@
 @extends('frontsite.layouts.app')
+@push('style')
+    <style>
+        /* .badge {
+            display: inline-block;
+        } */
+
+    </style>
+@endpush
 @section('content')
 <main id="main">
     <section id="about" class="about">
@@ -14,7 +22,10 @@
                             <h1 class="mb-3">{{ $article->title }}</h1>
                             <div class="d-flex align-items-center mb-3">
                                 <span class="text-muted me-2">Dibuat pada : {{ $article->created_at->format('d M Y') }}</span>
-                                <span class="badge me-2 text-bg-primary">{{ $article->category->name }}</span>
+                                {{-- <span class="badge me-2 text-bg-primary">{{ $article->category->name }}IJHSHIOHEIHOIXS</span> --}}
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="badge me-2 text-bg-primary">Kategori : {{ $article->category->name }}</span>
                             </div>
                         </header>
 
@@ -51,12 +62,15 @@
                             <div class="d-flex align-items-center mb-3">
                                 <img class="img-fluid me-4" src="{{ asset('storage/'.$item->thumbnail) }}" alt="" style="width: 100px;">
                                 <div class="">
-                                    <h6><a href="">{{ $item->title }}</a></h6>
+                                    <h6><a href="" class="ms-2">{{ $item->title }}</a></h6>
                                     <div class="d-flex align-items-center mb-3">
 
-                                        @foreach ($item->tags as $key => $tag)
-                                        <span class="badge me-2 {{ $key % 2 == 0 ? 'text-bg-primary' : 'text-bg-danger' }}">{{ $tag->name }}</span>
-                                        @endforeach
+                                        <div class="d-flex flex-wrap">
+                                            @foreach ($item->tags as $key => $tag)
+                                                <span class="badge m-1 {{ $key % 2 == 0 ? 'text-bg-primary' : 'text-bg-danger' }}">{{ $tag->name }}</span>
+                                            @endforeach
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
