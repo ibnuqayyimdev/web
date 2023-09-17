@@ -582,7 +582,7 @@
             </div>
 
             <div class="section-title">
-                <h6><a href="">Lebih banyak..</a></h6>
+                <h6><a href="{{ url('articles') }}">Lebih banyak..</a></h6>
             </div>
         </div>
     </section>

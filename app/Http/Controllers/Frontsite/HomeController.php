@@ -58,8 +58,14 @@ class HomeController extends Controller
         return view('frontsite.pages.home.index',$data);
     }
 
+    public function articles(){
+        $data['articles'] = Article::with('tags')->orderBy('created_at','desc')->paginate(1);
+        // dd($data);
+        return view('frontsite.pages.article.index',$data);
+    }
+
     public function articleDetail($slug){
-        $data['article'] = Article::with('category')->where('slug',$slug)->first();
+        $data['article'] = Article::with('category')->where('slug',$slug)->firstOrFail();
         $data['articles'] = Article::latest()->take(5)->get();
         $data['categories'] = Category::select(
             'id',
