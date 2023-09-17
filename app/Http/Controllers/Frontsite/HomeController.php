@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Frontsite;
 
+use App\Helper\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\Category;
 use App\Models\ContentSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -16,25 +18,27 @@ use Artesaos\SEOTools\Facades\JsonLdMulti;
 
 // OR
 use Artesaos\SEOTools\Facades\SEOTools;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
     public function index() {
+        // dd('ok');
         $appName = env('APP_NAME');
-        $appDescription = 'This is my page description';
+        $appDescription = 'ibnuqayyim.sch.id';
         $appUrl = env('APP_URL');
 
         SEOMeta::setTitle($appName);
         SEOMeta::setDescription($appDescription);
-        SEOMeta::setCanonical('https://codecasts.com.br/lesson');
+        SEOMeta::setCanonical($appDescription);
 
         OpenGraph::setDescription($appDescription);
         OpenGraph::setTitle($appName);
         OpenGraph::setUrl($appUrl);
         OpenGraph::addProperty('type', 'articles');
 
-        TwitterCard::setTitle('Homepage');
-        TwitterCard::setSite('@LuizVinicius73');
+        TwitterCard::setTitle($appName);
+        // TwitterCard::setSite('@LuizVinicius73');
 
         JsonLd::setTitle('Homepage');
         JsonLd::setDescription($appDescription);
@@ -55,7 +59,36 @@ class HomeController extends Controller
     }
 
     public function articleDetail($slug){
-        $data['article'] = Article::where('slug',$slug)->first();
+        $data['article'] = Article::with('category')->where('slug',$slug)->first();
+        $data['articles'] = Article::latest()->take(5)->get();
+        $data['categories'] = Category::select(
+            'id',
+            'name',
+            DB::raw("(select count(*) from articles where category_id = categories.id) as count_articles"),
+        )->where('categories.status',Helper::STATUS['ACTIVE'])->get();
+        // dd($data);
+
+        SEOMeta::setTitle($data['article']->title);
+        SEOMeta::setDescription($data['article']->body);
+        SEOMeta::addMeta('article:published_time', $data['article']->created_at, 'property');
+        SEOMeta::addMeta('article:section', $data['article']->category, 'property');
+        SEOMeta::addKeyword([$data['article']->title, 'ibnuqayyim', 'pendaftaran ibnuqayyim','pendaftaran ibnuqayyim jakarta','ibnuqayyim jakarta','smp ibnuqayyim']);
+
+        OpenGraph::setDescription($data['article']->body);
+        OpenGraph::setTitle($data['article']->title);
+        OpenGraph::setUrl(env('APP_URL'));
+        OpenGraph::addProperty('type', 'article');
+        OpenGraph::addProperty('locale', 'id_ID');
+
+        OpenGraph::addImage(asset('storage/'.$data['article']->thumbnail));
+        OpenGraph::addImage(['url' => asset('Logo-Ibnu-Qayyim/Logo 2.png'), 'size' => 300]);
+        OpenGraph::addImage(asset('Logo-Ibnu-Qayyim/Logo 2.png'), ['height' => 300, 'width' => 300]);
+
+        JsonLd::setTitle($data['article']->title);
+        JsonLd::setDescription($data['article']->body);
+        JsonLd::setType('Article');
+        JsonLd::addImage(asset('storage/'.$data['article']->thumbnail));
+
         return view('frontsite.pages.article.detail',$data);
     }
 

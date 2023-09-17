@@ -9,4 +9,8 @@ class Category extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function article(){
+        return $this->belongsTo(Article::class,'id','category_id');
+    }
 }

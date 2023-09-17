@@ -16,7 +16,7 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{ asset('PurpleAdmin/assets/css/style.css') }}">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="{{ asset('PurpleAdmin/assets/images/favicon.ico') }}" />
+    <link rel="shortcut icon" href="{{ asset('Logo-Ibnu-Qayyim/Logo 2.png') }}" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @stack('style')

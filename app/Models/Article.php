@@ -40,4 +40,9 @@ class Article extends Model
     {
         return $this->belongsToMany(Tag::class,'article_tags');
     }
+
+    public function category()
+    {
+        return $this->hasOne(Category::class,'id','category_id');
+    }
 }
