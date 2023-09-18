@@ -26,7 +26,19 @@
                             <td>{{ $registration->first_name }} {{ $registration->last_name }}</td>
                             <td>{{ $registration->age }} tahun</td>
                             <td>{{ $registration->gender == 1 ? 'Laki-laki' : 'Perempuan' }}</td>
-                            <td>{{ $registration->status == 0 ? 'Pendaftar Baru' : 'Siswa' }}</td>
+                            <td>
+                                @if($registration->status == 1)
+                                Lulus
+                                @elseif($registration->status == 2)
+                                Revisi
+                                @elseif($registration->status == 3)
+                                Pending
+                                @elseif($registration->status == 4)
+                                Tidak Lulus
+                                @else
+                                Status Tidak Valid
+                                @endif
+                            </td>
                             <td>{{ \Carbon\Carbon::parse($registration->created_at)->translatedFormat('d F Y') }}</td>
                             <td>
                                 <a href="{{ route('student-registration.detail', $registration->id) }}" class="btn btn-primary btn-sm">Lihat</a>

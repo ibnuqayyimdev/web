@@ -82,22 +82,28 @@
             <input type="text" class="form-control" id="address" value="{{ $studentRegistration->address }}" readonly>
         </div>
 
-        <div class="form-group">
-            <label for="status">Pilih Status</label>
-            <select class="form-control" id="status">
-                <option value="1">Lulus</option>
-                <option value="2">Revisi</option>
-                <option value="3">Pending</option>
-                <option value="4">Tidak Lulus</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <div class="btn-group" role="group">
-                <button type="button" class="btn btn-success">Simpan</button>
-                <button type="button" class="btn btn-danger">Batal</button>
+        <form action="{{ route('update.status', ['id' => $studentRegistration->id]) }}" method="POST">
+            @csrf
+            @method('PATCH')
+            <div class="form-group">
+                <label for="status">Pilih Status</label>
+                <select class="form-control" id="status" name="status">
+                    <option value="1" {{ $studentRegistration->status == 1 ? 'selected' : '' }}>Lulus</option>
+                    <option value="2" {{ $studentRegistration->status == 2 ? 'selected' : '' }}>Revisi</option>
+                    <option value="3" {{ $studentRegistration->status == 3 ? 'selected' : '' }}>Pending</option>
+                    <option value="4" {{ $studentRegistration->status == 4 ? 'selected' : '' }}>Tidak Lulus</option>
+                </select>
             </div>
-        </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Simpan</button>
+                <a href="{{ route('student-registration.list') }}" class="btn btn-danger">Batal</a>
+            </div>
+        </form>
     </div>
 </div>
 @endsection
+@push('script')
+<script>
+</script>
+@endpush

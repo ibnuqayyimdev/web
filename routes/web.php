@@ -67,6 +67,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/student-registration/list', [StudentRegistrationController::class, 'list'])->name('student-registration.list');
     Route::get('/student-registration/detail/{id}', [StudentRegistrationController::class, 'detail'])->name('student-registration.detail');
+    Route::patch('/update-status/{id}', [StudentRegistrationController::class, 'updateStatus'])->name('update.status');
     Route::get('/student-registration', [StudentRegistrationController::class, 'index']);
     Route::get('/student-registration-form/{slug}', [StudentRegistrationController::class, 'create']);
     Route::get('/student-registration-form-detail/{id}', [StudentRegistrationController::class, 'edit']);

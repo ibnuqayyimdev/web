@@ -20,7 +20,7 @@ class StudentRegistrationController extends Controller
     {
         App::setLocale('id');
         $data['studentRegistration'] = StudentRegistration::all();
-        return view('backsite.pages.student-registration.list',$data);
+        return view('backsite.pages.student-registration.list', $data);
     }
 
     public function detail(string $id)
@@ -35,13 +35,31 @@ class StudentRegistrationController extends Controller
         }
     }
 
+    public function updateStatus(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required|in:1,2,3,4',
+        ]);
+
+        $studentRegistration = StudentRegistration::find($id);
+
+        if (!$studentRegistration) {
+            return redirect()->back()->with(['error' => 'Something went wrong!', 'alert-type' => 'error']);
+        }
+
+        $studentRegistration->status = $request->status;
+        $studentRegistration->save();
+
+        return redirect()->route('student-registration.list')->with(['message' => 'Pendaftaran Berhasil Diupdate', 'alert-type' => 'success']);
+    }
+
     public function index()
     {
         App::setLocale('id');
-        $data['RegistrationSchedule'] = RegistrationSchedule::where('status',Helper::STATUS['ACTIVE'])->get();
-        $data['StudentRegistration'] = StudentRegistration::with('registrationSchedule')->where('user_id',auth()->user()->id)->get();
+        $data['RegistrationSchedule'] = RegistrationSchedule::where('status', Helper::STATUS['ACTIVE'])->get();
+        $data['StudentRegistration'] = StudentRegistration::with('registrationSchedule')->where('user_id', auth()->user()->id)->get();
 
-        return view('backsite.pages.student-registration.index',$data);
+        return view('backsite.pages.student-registration.index', $data);
     }
 
     /**
@@ -51,7 +69,7 @@ class StudentRegistrationController extends Controller
     {
         $data['genders'] = Helper::genderList('ARABIC');
         $data['provinces'] = \Indonesia::allProvinces();
-        $data['schedule'] = RegistrationSchedule::where('slug',$slug)->first();
+        $data['schedule'] = RegistrationSchedule::where('slug', $slug)->first();
         // dd($data);
         return view('backsite.pages.student-registration.create', $data);
     }
@@ -141,7 +159,7 @@ class StudentRegistrationController extends Controller
             DB::commit();
         } catch (Exception $e) {
             DB::rollBack();
-            if(env('APP_ENV') == 'local'){
+            if (env('APP_ENV') == 'local') {
                 dd($e);
             }
             $response = ['message' => 'Something went wrong!', 'alert-type' => 'error'];
