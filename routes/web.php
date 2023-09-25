@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContentSettingController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\RegistrationScheduleController;
 use App\Http\Controllers\SchoolProfileController;
 use App\Http\Controllers\StudentRegistrationController;
 use App\Http\Controllers\TagController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -72,4 +74,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/student-registration-form/{slug}', [StudentRegistrationController::class, 'create']);
     Route::get('/student-registration-form-detail/{id}', [StudentRegistrationController::class, 'edit']);
     Route::post('/student-registration-store', [StudentRegistrationController::class, 'store']);
+
+    Route::get('/banner-list', [BannerController::class, 'list'])->name('banner.list');
+    Route::get('/banner/create', [BannerController::class, 'create'])->name('banner.create');
+    Route::post('/banner/store', [BannerController::class, 'store'])->name('banner.store');
+    Route::get('/banner/edit/{id}', [BannerController::class, 'edit'])->name('banner.edit');
+    Route::patch('/banner/update/{id}', [BannerController::class, 'update'])->name('banner.update');
+    Route::delete('/banner/delete/{id}', [BannerController::class, 'destroy'])->name('banner.delete');
 });
